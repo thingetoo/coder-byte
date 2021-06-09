@@ -36,6 +36,8 @@ return true
 const validPalindromeWithRemove = (str) => {
   const lengthOfString = str.length;
   let p1, p2;
+  // small thing but make sure to declare these variables before
+  // js was throwing an error when trying to initialize them inside of the if statement
   if (lengthOfString % 2 === 0) {
     p1 = lengthOfString / 2 - 1;
     p2 = lengthOfString / 2;
