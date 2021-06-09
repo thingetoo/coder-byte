@@ -60,4 +60,9 @@ const validPalindromeWithRemove = (str) => {
   return true;
 };
 
-console.log(validPalindromeWithRemove('abccab'));
+const isPalidrome = (str) => {
+  return str === str.split('').reverse().join('');
+};
+
+console.log(validPalindromeWithRemove('raicecar'));
+foooof;
