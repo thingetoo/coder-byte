@@ -35,13 +35,14 @@ return true
 
 const validPalindromeWithRemove = (str) => {
   const lengthOfString = str.length;
+  let p1, p2;
   if (lengthOfString % 2 === 0) {
-    let p1 = lengthOfString / 2 - 1;
-    let p2 = lengthOfString / 2;
+    p1 = lengthOfString / 2 - 1;
+    p2 = lengthOfString / 2;
   } else {
     const mid = Math.floor(lengthOfString / 2);
-    let p1,
-      p2 = mid;
+    p1 = mid;
+    p2 = mid;
   }
   let haveWeRemoved = false;
   while (p1 >= 0 || p2 <= lengthOfString - 1) {
@@ -50,9 +51,11 @@ const validPalindromeWithRemove = (str) => {
         return false;
       }
       haveWeRemoved = true;
-      p1--;
-      p2++;
     }
+    p1--;
+    p2++;
   }
   return true;
 };
+
+console.log(validPalindromeWithRemove('abccab'));
