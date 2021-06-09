@@ -29,6 +29,30 @@ while pointer1 is greater than or equal to zero or pointer2 is less than or equa
       return false
     else
       set onetime toggle to true
-
+  increment p2 and decrement p1
 return true
 */
+
+const validPalindromeWithRemove = (str) => {
+  const lengthOfString = str.length;
+  if (lengthOfString % 2 === 0) {
+    let p1 = lengthOfString / 2 - 1;
+    let p2 = lengthOfString / 2;
+  } else {
+    const mid = Math.floor(lengthOfString / 2);
+    let p1,
+      p2 = mid;
+  }
+  let haveWeRemoved = false;
+  while (p1 >= 0 || p2 <= lengthOfString - 1) {
+    if (str[p1] !== str[p2]) {
+      if (haveWeRemoved) {
+        return false;
+      }
+      haveWeRemoved = true;
+      p1--;
+      p2++;
+    }
+  }
+  return true;
+};
