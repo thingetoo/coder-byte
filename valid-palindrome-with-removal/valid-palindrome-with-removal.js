@@ -15,5 +15,20 @@ Input: a string
 Contraints: logn
 Edge Cases: empty string => true, type must be string
 
+determine if the string is even or odd => this will determine our pointers
+declare two pointers
+if str is even
+  set the two pointers to the mid points
+else
+  set the two pointers on the same mid point
+declare a one time toggle equal to false
 
+while pointer1 is greater than or equal to zero or pointer2 is less than or equal to the length of the string minus 1
+  if values at each pointer are not the same
+    if onetime toggle is true
+      return false
+    else
+      set onetime toggle to true
+
+return true
 */
