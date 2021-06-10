@@ -35,7 +35,8 @@ TEST:
   0: true,
   2: true,
   -2: true,
-  1: true,
+  -1: true,
+
 }
 
 */
@@ -52,4 +53,4 @@ const twoSum = (arr, k) => {
   return false;
 };
 
-console.log(twoSum([3, 9, 13, 7], 8));
+console.log(twoSum([], 8));
