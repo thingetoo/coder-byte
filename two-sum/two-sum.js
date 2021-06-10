@@ -39,3 +39,17 @@ TEST:
 }
 
 */
+const twoSum = (arr, k) => {
+  const seen = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (seen[arr[i]]) {
+      return true;
+    }
+    const compliment = k - arr[i];
+    seen[compliment] = true;
+  }
+  return false;
+};
+
+console.log(twoSum([3, 9, 13, 7], 8));
