@@ -15,5 +15,27 @@ Input: an array of numbers
 Constraints: less than O(n) time
 Edge Cases: if the array length is equal to one, return false,
 
+Pseudo:
+
+
+declare an object that will keep track of the numbers that we've seen's compliment
+
+loop over the array
+  if the value at the current array index is present in seen object
+    return true
+  declare a compliment variable that is equal to k minus value
+  set the complement variable in the seen object to true
+
+return false
+
+--------------
+TEST:
+[4, 2, 6, 5, 2], k = 4
+{
+  0: true,
+  2: true,
+  -2: true,
+  1: true,
+}
 
 */
