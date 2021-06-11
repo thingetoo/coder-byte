@@ -5,3 +5,10 @@ Ex: Given the following jewels and stones...
 jewels = "abc", stones = "ac", return 2
 jewels = "Af", stones = "AaaddfFf", return 3
 jewels = "AYOPD", stones = "ayopd", return 0
+
+OICE
+Output: a number representing the stones that are also jewels
+Input: two strings representing the jewels and stones
+Constraints: O(n) or less
+Edge Cases: n/a
+
