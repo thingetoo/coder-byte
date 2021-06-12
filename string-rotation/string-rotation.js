@@ -57,12 +57,21 @@ return Object.keys(occ) === 0;
 
 PSEUDO
 
+get the length of the first string
+
+check if the length of the first string length equals the second string length and the first string length is greater than zero
+  concat the second(rotated) string to itself
+  use the isSubstring method to check if the first string is a substring of the second string => will return a boolean
+
 str1 and str2
 
+const resultLength = str1.length;
 
-const catted = str2 + str2
-const resultLength = st1.length;
+if (resultLength === str2.length && result.length > 0) {
+  const catted = str2 + str2
+  return isSubstring(catted, string1)
+}
 
-for (let i = 0; )
+
 
 */
