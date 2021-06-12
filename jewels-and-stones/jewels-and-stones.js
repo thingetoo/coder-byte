@@ -18,7 +18,6 @@
 // iterate over the jewels
 //   store them in a hash table: if not seen store them, => quantity doesn't matter
 
-
 // iterate over the stones
 //   check if each stone is present in the jewels hash
 //     increment result
@@ -26,5 +25,21 @@
 // return the result
 
 const jewelsAndStones = (jewels, stones) => {
-  
-}
+  let result = 0;
+  const uniqJewels = {};
+
+  for (let i = 0; i < jewels.length; i++) {
+    if (!uniqJewels[jewels[i]]) {
+      uniqJewels[jewels[i]] = true;
+    }
+  }
+
+  for (let i = 0; i < stones.length; i++) {
+    if (uniqJewels[stones[i]]) {
+      result++;
+    }
+  }
+  return result;
+};
+
+console.log(jewelsAndStones('Af', 'AaaddfFf'));
