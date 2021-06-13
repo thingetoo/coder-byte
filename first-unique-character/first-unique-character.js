@@ -25,6 +25,12 @@ loop through the string
   if the letter at the hash table is greater than or equal 0
     set that letter in the hash equal to null
 
+let firstUnqiue = Infinity;
+
+loop through the object
+  if object value >= 0
+    set firt unique to the min between itself and the object value
 
 
+return firstUnique === Infinity ? -1 : firstUnique
 */
