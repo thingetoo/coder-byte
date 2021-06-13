@@ -34,3 +34,26 @@ loop through the object
 
 return firstUnique === Infinity ? -1 : firstUnique
 */
+
+const firstUniqueCharacter = (str) => {
+  const isUnique = {};
+  for (let i = 0; i < str.length; i++) {
+    if (isUnique[str[i]] === null) {
+      continue;
+    }
+    if (isUnique[str[i]] === undefined) {
+      isUnique[str[i]] = i;
+    } else if (typeof isUnique[str[i]] === 'number') {
+      isUnique[str[i]] = null;
+    }
+  }
+  let firstUnique = Infinity;
+  for (let key in isUnique) {
+    if (typeof isUnique[key] === 'number') {
+      firstUnique = Math.min(firstUnique, isUnique[key]);
+    }
+  }
+  return firstUnique === Infinity ? -1 : firstUnique;
+};
+
+console.log(firstUniqueCharacter('abcdabcd'));
