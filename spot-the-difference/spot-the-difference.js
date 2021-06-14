@@ -5,6 +5,12 @@ You are given two strings, s and t which only consist of lowercase letters. t is
 
 Note: You may assume that at most one additional character can be added to t.
 
+Ex: Given the following strings...
+
+s = "foobar", t = "barfoot", return 't'
+s = "ide", t = "idea", return 'a'
+s = "coding", t "ingcod", return ''
+
 OICE
 
 Output: a string representing the letter that was added or an empty space
@@ -15,9 +21,49 @@ Edge Cases: no letters added => empty string
 => check if the length of the two strings are the same
 
 => Two potential ways:
-1. We could sort the strings and then iterate through to see if they match
+1. We could sort the strings and then iterate through to see if they match // T: nlogn - use a sorting algorithm && S: O(1)
 
-2. We could store the string values in a hash table and see if they match by subtracting values from the hash
+2. We could store the string values in a hash table and see if they match by subtracting values from the hash // T: O(n) && S: O(n)
 
+PSEUDO:
+
+if the two strings are of equal length
+  return a space
+
+Declare an occurences hash table
+
+iterate through through the string t and count the number of occurences of each letter
+
+iterate through string s and subtract and delete values that we come across
+
+return the first index of the occurences hash table's keys
 
 */
+
+const spotTheDifference = (s, t) => {
+  if (s.length === t.length) {
+    return '';
+  }
+  const occ = {};
+
+  for (let i = 0; i < t.length; i++) {
+    if (!occ[t[i]]) {
+      occ[t[i]] = 1;
+    } else {
+      occ[t[i]]++;
+    }
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    if (!occ[s[i]]) {
+      return s[i];
+    }
+    occ[s[i]]--;
+    if (occ[s[i]] === 0) {
+      delete occ[s[i]];
+    }
+  }
+  return Object.keys(occ)[0];
+};
+
+console.log(spotTheDifference((s = 'coding'), (t = 'ingcod')));
