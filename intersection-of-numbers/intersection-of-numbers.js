@@ -27,23 +27,27 @@ Edge Cases: none in common return an empty array
 
 T: O(n)
 S: O(n)
+nums1 = [2, 4, 4, 2], nums2 = [2, 4], return [2, 4]
 
-
+nums1H = {
+}
+results = [2, 4]
 */
+const intersection = () => {
+  const nums1H = {};
+  const results = [];
 
-const nums1H = {};
-const results = [];
-
-for (let i = 0; i < nums1.length; i++) {
-  if (!nums1H[nums1[i]]) {
-    nums1H[nums1[i]] = true;
+  for (let i = 0; i < nums1.length; i++) {
+    if (!nums1H[nums1[i]]) {
+      nums1H[nums1[i]] = true;
+    }
   }
-}
 
-for (let i = 0; i < nums2.length; i++) {
-  if (nums1H[nums2[i]]) {
-    results.push(nums2[i]);
-    delete nums1H[nums2[i]];
+  for (let i = 0; i < nums2.length; i++) {
+    if (nums1H[nums2[i]]) {
+      results.push(nums2[i]);
+      delete nums1H[nums2[i]];
+    }
   }
+  return results;
 }
-return results;
