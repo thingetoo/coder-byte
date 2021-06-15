@@ -17,5 +17,33 @@ Input: Two arrays
 Constraints: n/a
 Edge Cases: none in common return an empty array
 
+1. declare hash table and an results array
+2. iterate through nums1 and store each one in a hash table
+3. iterate through nums2
+  if a value is present in the hash table
+    push it into the results array
+
+4. return the results array
+
+T: O(n)
+S: O(n)
+
 
 */
+
+const nums1H = {};
+const results = [];
+
+for (let i = 0; i < nums1.length; i++) {
+  if (!nums1H[nums1[i]]) {
+    nums1H[nums1[i]] = true;
+  }
+}
+
+for (let i = 0; i < nums2.length; i++) {
+  if (nums1H[nums2[i]]) {
+    results.push(nums2[i]);
+    delete nums1H[nums2[i]];
+  }
+}
+return results;
