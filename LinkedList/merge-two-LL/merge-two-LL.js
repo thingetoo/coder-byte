@@ -18,6 +18,7 @@ if one list is null
 
 check which linked list has the lower value => this will be the head
 declare a variable of a new linked list with the lowest value => merged
+set the lower value's LL to the next
 keep a reference to the head
 
 iterate through the lists => while loop
@@ -29,7 +30,49 @@ check which list still has values
   add that list to the end
 return head
 
-l1 = [1,2,4], l2 = [1,3,4]
-
+l1 = [1,2,4],
+          ^
+l2 = [1,3,4]
+        ^
+RESULT = 1 -> 2 -> 2 -> 4  -> 4
 
 */
+
+var mergeTwoLists = function (l1, l2) {
+  if (!l1) {
+    return null;
+  }
+  if (!l2) {
+    return null;
+  }
+  let smallerHead;
+  let largerHead;
+  if (l1.val < l2.val) {
+    smallerHead = l1;
+    largerHead = l2;
+  } else {
+    smallerHead = l2;
+    largerHead = l1;
+  }
+
+  let merged = new ListNode(smallerHead.val);
+  smallerHead = smallerHead.next;
+  const head = merged;
+
+  while (smallerHead && largerHead) {
+    if (smallerHead.val < largerHead.val) {
+      const newNode1 = new ListNode(smallerHead.val);
+      merged.next = newNode;
+      smallerHead = smallerHead.nextl;
+    } else {
+      const newNode2 = new ListNode(largerHead.val);
+      merged.next = newNode2;
+      largerHead = largerHead.next;
+    }
+  }
+  if (smallerHead) {
+    merged.next = smallerHead;
+  } else {
+    merged.next = largerHead;
+  }
+};
