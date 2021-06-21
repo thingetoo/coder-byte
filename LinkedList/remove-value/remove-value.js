@@ -24,6 +24,7 @@ if the next node is falsy
 
 declare a result that's equal to the head
 
+/// HEAD CHECK ///
 while the value of the result is equal to the target and result is truthy
   result is equal to result.next
 
@@ -33,6 +34,27 @@ while result.next
 
 if the value of result is equal to the target
   return result.next
-
 */
-
+var removeElements = function(head, val) {
+    if (!head) {
+      return head
+    }
+    if (!head.next) {
+      if (head.val === val) {
+        return head.next
+      } else {
+        return head;
+      }
+    }
+    while (head.val === val && head) {
+      head = head.next
+    }
+    let result = head;
+    while (result.next) {
+      if (result.next === val) {
+        result.next = result.next.next;
+      }
+      result = result.next;
+    }
+    return head;
+};
