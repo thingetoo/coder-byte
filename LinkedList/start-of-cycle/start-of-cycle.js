@@ -14,4 +14,28 @@ Constraints: n/a
 Edge Cases: a node pointing to itself
 
 PSEUDO
+
+1. declare an object to keep track of the nodes that we've seen so far
+2. iterate over the linked list
+  - store the vales in the hash table
+  - the first time we come over the same value
+    return that value
+
+3. return head
+
 */
+
+var detectCycle = function(head) {
+    const seen = {};
+
+    while (head) {
+      if (seen[head]) {
+        return head
+      } else {
+        seen[head] = true;
+      }
+      head = head.next;
+    }
+
+    return head;
+};
