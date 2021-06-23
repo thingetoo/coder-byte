@@ -48,10 +48,11 @@ var reverseList = function (head) {
 
   let current = head;
   let prev = current;
+  let next = current.next;
   prev.next = null;
-  current = current.next;
+  current = next;
   while (current) {
-    let next = current.next;
+    next = current.next;
     current.next = prev;
     prev = current;
     current = next;
