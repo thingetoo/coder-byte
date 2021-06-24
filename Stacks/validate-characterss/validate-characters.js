@@ -32,6 +32,12 @@ HL: Use a data structure like a stack => which will operate in a LIFO
         return false
 
   return if the object is empty
+
+
+  {{}
+  stack {{
+
+
 */
 
 var isValid = function (s) {
@@ -41,5 +47,19 @@ var isValid = function (s) {
     '(': ')',
     '[': ']',
   };
-  for (let i = 0; i < s.length; i++) {}
+  for (let i = 0; i < s.length; i++) {
+    if (comps[s[i]]) {
+      stack.push(s[i]);
+    } else {
+      if (!stack.length) {
+        return false;
+      } else {
+        const popped = stack.pop();
+        if (comps[popped] !== s[i]) {
+          return false;
+        }
+      }
+    }
+  }
+  return stack.length === 0;
 };
