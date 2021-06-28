@@ -4,18 +4,28 @@ Note: you may assume that the time associated with each subsequent call to ping 
 
 Ex: Given the following calls to ping…
 
-ping(1), return 1 (1 call within the last 3 seconds)
-ping(300), return 2 (2 calls within the last 3 seconds)
-ping(3000), return 3 (3 calls within the last 3 seconds)
-ping(3002), return 3 (3 calls within the last 3 seconds)
-ping(7000), return 1 (1 call within the last 3 seconds)
+
+ping(300), return 2 (2 calls within the last 3 seconds) [300]
+ping(3000), return 3 (3 calls within the last 3 seconds) [1, 300, 3000]
+ping(3002), return 3 (3 calls within the last 3 seconds) [300, 3000, 3002]
+ping(7000), return 1 (1 call within the last 3 seconds) [7000]
+
+[]
 
 OICE
 Designing a class => so the format is a little different here
 
 
 TEST
-[1, 300, 3000]
+[1] => 1
+[1, 1000] => 2
+
+[1000, 3001] => 2
+
+[1000, 3001, 3002] => 3
+
+[7000] => 1
+
 
 HL: we keep track of the number of values with a queue => we push the value on and compare the current time to the oldest time
     and we will shift if the difference is greater than 3000
@@ -33,6 +43,8 @@ Ping method(time(ms))
 
 
 
+
+
 */
 
 var RecentCounter = function () {
@@ -41,7 +53,6 @@ var RecentCounter = function () {
 
 RecentCounter.prototype.ping = function (t) {
   let first = this.queue[0];
-  console.log(first, t - first);
   while (first && t - first > 3000) {
     this.queue.shift();
     first = this.queue[0];
