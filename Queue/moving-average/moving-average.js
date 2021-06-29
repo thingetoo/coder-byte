@@ -19,17 +19,45 @@ public class MovingAverage {
  * Initializes a MovingAverage with a
  * capacity of `size`.
  */
-public MovingAverage(int size) {
-  // TODO: initialize your MovingAverage.
-}
+/*
+OICE
 
-/**
- * Adds `val` to the stream of numbers
- * and returns the current average of the numbers.
- */
-public double next(int val) {
-  // TODO: implement this method.
-}
+Output: an interface that keeps track of the moving average
+Input: first input is the limit(how many numbers to keep an average of)
+Constraints: n/a
+Edge Cases: none
 
-}
-* /
+HL: make sure that our array is static => ensure it doesn't exceed a certain length
+
+
+Contructor
+declare an empty array (queue)
+keep track of the input => size
+declare a variable that keeps track of the total
+
+
+Next method
+if the length of the array is equal to the limit
+  shift the first element out of the array => store it as a variable
+  subtract the number from the total
+add the new number to the total
+push the new number to the end of the array
+return the total divided by the array length
+*/
+
+var MovingAverage = function (size) {
+  this.queue = [];
+  this.size = size;
+  this.total = 0;
+};
+
+MovingAverage.prototype.next = function (val) {
+  const queueL = this.queue.length;
+  if (queueL === size) {
+    const toRemove = this.queue.shift();
+    this.total -= toRemove;
+  }
+  this.total += val;
+  this.queue.push(val);
+  return this.total / queueL
+};
