@@ -9,7 +9,13 @@ Constraints: n/a
 Edge Cases: if tree is null return null
 
 
-HL: compare the node value to the value we're looking for => recurse: call func or left child, call function on right right child
+HL: compare the node value to the value we're looking for =>
+  - recurse based on conditional
+    if the input value is greater than the current node value
+      call function on right right child
+    else
+      call func or left child
+
 
 */
 
